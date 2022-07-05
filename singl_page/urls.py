@@ -14,5 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from portfolio.urls import urlpatterns as portfolio_urls
+from django.conf.urls.static import static
+from django.conf import settings
 
-urlpatterns = [] + portfolio_urls
+urlpatterns = []
+urlpatterns += portfolio_urls
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
